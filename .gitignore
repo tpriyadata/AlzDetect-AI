@@ -80,3 +80,6 @@ logs/
 !configs/.gitkeep
 !preprocessing/.gitkeep
 !tests/.gitkeep
+
+# Add this line to .gitignore
+preprocessing/phase2.txt
