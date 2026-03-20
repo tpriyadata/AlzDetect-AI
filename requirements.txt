@@ -1,0 +1,9 @@
+streamlit
+anthropic
+sentence-transformers
+faiss-cpu
+numpy
+python-dotenv
+torch
+transformers
+

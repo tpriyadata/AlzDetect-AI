@@ -83,3 +83,6 @@ logs/
 
 # Add this line to .gitignore
 preprocessing/phase2.txt
+
+# HuggingFace tokens — keep private!
+huggingface/*.token

@@ -1,4 +1,5 @@
 # AlzDetect AI — Streamlit App ───────────
+from anyio import Path
 import streamlit as st
 import faiss
 import numpy as np
@@ -8,7 +9,14 @@ import anthropic
 from sentence_transformers import SentenceTransformer
 from dotenv import load_dotenv
 
-load_dotenv(dotenv_path="../.env")
+# ✅ Fix — Load .env from root folder
+env_path = Path(__file__).parent.parent / ".env"
+load_dotenv(dotenv_path=env_path)
+
+# ✅ Verify key loaded
+api_key = os.getenv("ANTHROPIC_API_KEY")
+if not api_key:
+    raise ValueError("❌ ANTHROPIC_API_KEY not found!")
 
 # ── Page Config ────────────────────────────
 st.set_page_config(
@@ -81,7 +89,7 @@ def load_components():
 
     # Load Claude
     client = anthropic.Anthropic(
-        api_key=os.getenv("ANTHROPIC_API_KEY")
+    api_key=api_key  # ← use variable!
     )
 
     return chunks, index, model, client
@@ -160,7 +168,7 @@ def main():
 
     # Sidebar
     with st.sidebar:
-        st.markdown("## 📊 Pipeline Stats")
+        st.markdown("## Pipeline Stats")
         st.markdown(
             '<div class="metric-box">📄 16,281 Papers</div>',
             unsafe_allow_html=True
@@ -298,3 +306,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
