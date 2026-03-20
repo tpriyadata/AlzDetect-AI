@@ -86,3 +86,9 @@ preprocessing/phase2.txt
 
 # HuggingFace tokens — keep private!
 huggingface/*.token
+
+# HuggingFace notebook with tokens
+huggingface/upload_to_hf.ipynb
+
+# HuggingFace folder — contains tokens
+huggingface/
